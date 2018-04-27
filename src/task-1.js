@@ -1,27 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+import TabItem from "./TabItem";
 
 export default class Accordion extends React.Component {
+    constructor(props){
+        super(props);
+    }
 
+    makeCards() {
+        const cards = this.props.tabs.map((tab, i) => {
+            return <TabItem tab={tab} key={i}/>;
+            });
+        return cards;
+    }
+    
     render() {
         return (
             <div>
-                <div class="card">
-                    <div class="card-header text-white bg-info">
-                        Tab 1
-                    </div>
-                    <div class="card-body">
-                        Tab 1 body
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        Tab 2
-                    </div>
-                    <div class="card-body" hidden>
-                        Tab 2 body
-                    </div>
-                </div>
+                {this.makeCards()}
             </div>
         );
     }
